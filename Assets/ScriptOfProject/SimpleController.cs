@@ -8,6 +8,7 @@ public class SimpleController : MonoBehaviour
     public float sprintSpeed = 8f;
     public float crouchSpeed = 2.5f;
     public float crouchHeight = 0.5f;
+    public float jumpForce = 5f;
     private float originalHeight;
     private bool isCrouching = false;
 
@@ -38,7 +39,8 @@ public class SimpleController : MonoBehaviour
     private bool isSprinting = false;
     private bool isWalking = false;
     private float timer = 0;
-
+    private bool isGrounded = false;
+    public bool isPaused = false;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -60,6 +62,7 @@ public class SimpleController : MonoBehaviour
 
     void Update()
     {
+        if (isPaused) return;
         HandleMouseLook();
         HandleMovementInput();
         HandleInteraction();
@@ -102,6 +105,19 @@ public class SimpleController : MonoBehaviour
         {
             isCrouching = !isCrouching;
             transform.localScale = new Vector3(transform.localScale.x, isCrouching ? crouchHeight : originalHeight, transform.localScale.z);
+        }
+        // Jump
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            isGrounded = false;
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = true;
         }
     }
 

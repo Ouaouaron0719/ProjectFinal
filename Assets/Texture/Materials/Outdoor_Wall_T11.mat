@@ -27,6 +27,8 @@ Material:
   m_ValidKeywords:
   - _NORMALMAP
   - _PARALLAXMAP
+  - _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
+  - _SPECULARHIGHLIGHTS_OFF
   m_InvalidKeywords:
   - _DISABLE_SSR_TRANSPARENT
   - _DISPLACEMENT_LOCK_TILING_SCALE
@@ -60,7 +62,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1.5, y: 1.5}
+        m_Scale: {x: 0.1, y: 0.1}
         m_Offset: {x: 0, y: 0}
     - _EmissiveColorMap:
         m_Texture: {fileID: 0}
@@ -72,7 +74,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 6ef70f63575dd8e4b9bfc835ee314c39, type: 3}
-        m_Scale: {x: 1.5, y: 1.5}
+        m_Scale: {x: 0.1, y: 0.1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
         m_Texture: {fileID: 2800000, guid: 4a083c09b3ed881488689bc394e7185a, type: 3}
@@ -93,14 +95,21 @@ Material:
     m_Ints: []
     m_Floats:
     - _BumpScale: 0.5
-    - _Glossiness: 0.5
+    - _GlossMapScale: 0
+    - _Glossiness: 1
     - _HeightAmplitude: 0.02
     - _HeightCenter: 0.5
     - _HeightPoMAmplitude: 0.04
     - _InvTilingScale: 0.6666667
+    - _Metallic: 0.902
     - _NormalScale: 0.5
+    - _OcclusionStrength: 0.972
+    - _Parallax: 0.0428
     - _Smoothness: 0.5
     - _SmoothnessRemapMax: 0.5
-    m_Colors: []
+    - _SmoothnessTextureChannel: 1
+    - _SpecularHighlights: 0
+    m_Colors:
+    - _Color: {r: 0.8301887, g: 0.74805886, b: 0.6383055, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
