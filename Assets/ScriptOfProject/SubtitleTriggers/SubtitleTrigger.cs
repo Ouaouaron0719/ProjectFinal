@@ -5,27 +5,46 @@ public class SubtitleTrigger : MonoBehaviour
     public string subtitleContent;
     public AudioClip audioClip;
     public AudioSource audioSource;
-
+    public bool allowRepeat = false;
     private bool hasTriggered = false; 
 
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.CompareTag("Player") && !hasTriggered)
+    //    {
+    //        hasTriggered = true; 
+    //        FindAnyObjectByType<SubtitleText>().ShowText(subtitleContent);
+    //        PlayAudio();
+    //    }
+    //}
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !hasTriggered)
+        if (other.CompareTag("Player"))
         {
-            hasTriggered = true; 
-            FindAnyObjectByType<SubtitleText>().ShowText(subtitleContent);
-            PlayAudio();
+            if (!hasTriggered || allowRepeat)
+            {
+                TriggerSubtitle();
+            }
         }
     }
+
+    private void TriggerSubtitle()
+    {
+        hasTriggered = true;
+        FindAnyObjectByType<SubtitleText>().ShowText(subtitleContent);
+        PlayAudio();
+    }
+
     private void PlayAudio()
     {
         if (audioSource != null && audioClip != null)
         {
             audioSource.PlayOneShot(audioClip);
         }
-        else
-        {
-            Debug.LogWarning("AudioSource or AudioClip is not assigned for " + gameObject.name);
-        }
+    }
+
+    public void ResetTrigger()
+    {
+        hasTriggered = false;
     }
 }
