@@ -6,6 +6,7 @@ TagManager:
   tags:
   - FlashlightUnlock
   - Ground
+  - CollectableItem
   layers:
   - Default
   - TransparentFX

@@ -11,6 +11,11 @@ public class BackpackManager : MonoBehaviour
 
     private GameObject currentItem;
 
+    void Start()
+    {
+        collectedItems.Add(null); 
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && collectedItems.Count > 0)
@@ -28,6 +33,10 @@ public class BackpackManager : MonoBehaviour
         if (other.CompareTag("CollectableItem"))
         {
             CollectItem(other.gameObject);
+        }
+        else
+        {
+            Debug.Log("We are not taking this: " + other.name);
         }
     }
     public void CollectItem(GameObject item)
@@ -57,7 +66,12 @@ public class BackpackManager : MonoBehaviour
 
     private void DisplayItem()
     {
-        if (currentIndex >= 0 && currentIndex < collectedItems.Count)
+        if (currentIndex == 0)
+        {
+            currentItem = null;
+            Debug.Log("Switched to empty hands!");
+        }
+        else if (currentIndex >= 0 && currentIndex < collectedItems.Count)
         {
             currentItem = collectedItems[currentIndex];
             currentItem.SetActive(true);
