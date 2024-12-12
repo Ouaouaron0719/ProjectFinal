@@ -1,16 +1,20 @@
 using UnityEngine;
 
-public class BeerCan : MonoBehaviour
+public class BeerCan : MonoBehaviour, IInteractable
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void Interact()
     {
-        
-    }
+        BackpackManager backpackManager = FindObjectOfType<BackpackManager>();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (backpackManager != null)
+        {
+            backpackManager.CollectItem(gameObject);
+            gameObject.SetActive(false); 
+            Debug.Log("Beer added to backpack!");
+        }
+        else
+        {
+            Debug.LogWarning("BackpackManager not found in the scene!");
+        }
     }
 }
