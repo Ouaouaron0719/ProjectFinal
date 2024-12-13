@@ -7,6 +7,8 @@ public class BeerCan : MonoBehaviour, IInteractable
     public Transform handTransform;
     public Transform beerCanTransform;
     public float liftDuration = 0.5f;
+    public AudioClip drinkSound;        
+    public AudioSource audioSource;
 
 
     private bool isUsing = false;
@@ -56,6 +58,12 @@ public class BeerCan : MonoBehaviour, IInteractable
     private void StartUsingBeer()
     {
         isUsing = true;
+
+        if (drinkSound != null && audioSource != null)
+        {
+            audioSource.clip = drinkSound;
+            audioSource.Play();
+        }
 
         beerCanTransform.SetParent(cameraTransform);
         beerCanTransform.localPosition = targetBeerPosition;
