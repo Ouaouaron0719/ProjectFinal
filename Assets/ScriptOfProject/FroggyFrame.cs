@@ -10,7 +10,7 @@ public class FroggyFrame : MonoBehaviour,IInteractable
         if (targetLight != null && hasTriggered == false)
         {
             targetLight.enabled = false;
-            FindAnyObjectByType<SubtitleText>().ShowText("Frog King: There's something above the tunnel.");
+            FindAnyObjectByType<SubtitleText>().ShowText("Froggy King: There's something above the tunnel.");
             hasTriggered = true;
         }
         else
