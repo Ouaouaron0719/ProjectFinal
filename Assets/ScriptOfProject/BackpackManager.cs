@@ -56,6 +56,10 @@ public class BackpackManager : MonoBehaviour
         return currentItem;
     }
 
+    public string GetCurrentItemName()
+    {
+        return currentItem != null ? currentItem.name : string.Empty;
+    }
 
     private void SwitchItem()
     {
