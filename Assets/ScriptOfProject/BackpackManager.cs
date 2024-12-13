@@ -51,6 +51,11 @@ public class BackpackManager : MonoBehaviour
             DisplayItem();
         }
     }
+    public GameObject GetCurrentItem()
+    {
+        return currentItem;
+    }
+
 
     private void SwitchItem()
     {
